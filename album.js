@@ -28,6 +28,23 @@ var albumMarconi = {
     ]
 };
 
+var albumDemarco = {
+    title: 'Another One',
+    artist: 'Mac Demarco',
+    label: 'Capture Tracks',
+    year: '2015',
+    albumArtUrl: 'assets/images/album_covers/22.png',
+    songs: [
+        { title: "The Way You'd Love Her", duration: '2:36' },
+        { title: 'Another One', duration: '2:41' },
+        { title: 'No Other Heart', duration: '2:53'},
+        { title: 'Just to Put Me Down', duration: '3:18' },
+        { title: 'A Heart Like Hers', duration: '4:02'}
+        { title: "I've Been Waiting for Her", duration: '2:47' },
+        { title: 'Without Me', duration: '2:57' },
+        { title: 'My House by the Winter', duration: '2:35'},
+    ]
+};
 var createSongRow = function(songNumber, songName, songLength) {
     var template =
        '<tr class="album-view-song-item">'
@@ -40,15 +57,14 @@ var createSongRow = function(songNumber, songName, songLength) {
     return template;
 };
 
-var setCurrentAlbum = function(album) {
-    // #1
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
-    // #2
+var setCurrentAlbum = function(album) {
+
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -65,4 +81,14 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+
+    var album = [albumPicasso, albumMarconi, albumDemarco];
+    var index = 1;
+    albumImage.addEventListener("click", function(event) {
+        setCuurentAlbum(album[index]);
+        index++;
+        if (index == album.length) {
+            index = 0;
+        }
+    });
 };
