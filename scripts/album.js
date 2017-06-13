@@ -39,7 +39,7 @@ var albumDemarco = {
         { title: 'Another One', duration: '2:41' },
         { title: 'No Other Heart', duration: '2:53'},
         { title: 'Just to Put Me Down', duration: '3:18' },
-        { title: 'A Heart Like Hers', duration: '4:02'}
+        { title: 'A Heart Like Hers', duration: '4:02'},
         { title: "I've Been Waiting for Her", duration: '2:47' },
         { title: 'Without Me', duration: '2:57' },
         { title: 'My House by the Winter', duration: '2:35'},
@@ -82,12 +82,12 @@ var setCurrentAlbum = function(album) {
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
 
-    var album = [albumPicasso, albumMarconi, albumDemarco];
+    var albums = [albumPicasso, albumMarconi, albumDemarco];
     var index = 1;
     albumImage.addEventListener("click", function(event) {
-        setCuurentAlbum(album[index]);
+        setCurrentAlbum(albums[index]);
         index++;
-        if (index == album.length) {
+        if (index == albums.length) {
             index = 0;
         }
     });
