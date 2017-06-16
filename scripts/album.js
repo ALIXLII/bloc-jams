@@ -81,11 +81,18 @@ var setCurrentAlbum = function(album) {
 
 var findParentByClassName = function(element, targetClass) {
     if (element) {
-        var currentParent = element.parentElement;
-        while (currentParent.className !== targetClass && currentParent.className !== null) {
-            currentParent = currentParent.parentElement;
+        if (element.parentElement == true) {
+            var currentParent = element.parentElement;
+        } else {
+            return console.log("No parent found");
         }
-        return currentParent;
+        while (currentParent.className !== targetClass && currentParent.className !== null) {
+            if (currentParent = currentParent.parentElement) {
+                return currentParent;
+            } else {
+                return console.log("No parent found with that class name");
+            };
+        }
     }
 };
 
@@ -160,6 +167,7 @@ window.onload = function() {
             index = 0;
         }
     });
+
     for (var i = 0; i < songRows.length; i++) {
         songRows[i].addEventListener('mouseleave', function(event) {
             // #1
